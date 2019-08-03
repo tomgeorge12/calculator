@@ -16,7 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>CalculatoR</h2>
         </div>
-        <div className="container">
+        <div className="container cal-container">
           <Calculator/>
         </div>
       </div>

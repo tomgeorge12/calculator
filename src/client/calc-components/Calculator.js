@@ -55,7 +55,7 @@ class Calculator extends Component {
             this.props.setTempNumber("0")
             this.props.setResult("0")
             // this.setState({result: "0"})
-        } else if(argOp === 'Backspace'){
+        } else if(argOp === 'BK'){
             this.props.setTempNumber(tempNum ? tempNum.toString().substr(0, tempNum.toString().length - 1) : "0");
             this.props.setResult(result ? result.toString().substr(0, result.toString().length - 1) : "0");
         } else if(argOp === '=') {
@@ -69,15 +69,15 @@ class Calculator extends Component {
         let numComps = this.nums.map((num, idx) => <Button onEvent={this.onNumberClick} {...num} number={num} key={idx} />);
         let opComps = this.ops.map((op, idx) => <Button onEvent={this.onOpClick} {...op} key={idx} />);
         return (
-            <div className="panel panel-default col-lg-10">
+            <div className="panel panel-default col-lg-12">
                 <div className="panel-body">
-                    <div className='col-lg-10'>
-                        <Display result={result} tempNum={tempNum} />
+                    <div className='col-lg-12 padding-none'>
+                        <Display result={result} tempNum={tempNum} onEvent={this.onNumberClick}/>
                     </div>
-                    <div className='btn-group col-lg-6'>
+                    <div className='col-lg-8 bttn-group'>
                         {numComps}
                     </div>
-                    <div className='btn-group col-lg-4'>
+                    <div className='col-lg-4 bttnop-group'>
                         {opComps}
                     </div>
                 </div>

@@ -37,10 +37,10 @@ class Calculator extends Component {
     // }
 
     onNumberClick(argNum) {
+        const number = this.props.tempNum + argNum;
         if(argNum === '=') {
             this.onOpClick(argNum);
-        } else this.props.setTempNumber(argNum);
-        // this.setState({ tempNum: this.state.tempNum + argNum });
+        } else this.props.setTempNumber(number);
     }
 
     onOpClick(argOp) {
@@ -51,13 +51,13 @@ class Calculator extends Component {
             this.props.setOperator(argOp);
             // this.setState({num1:parseFloat(number), op:argOp});
         } else if(argOp === 'C'){
-            this.props.setFirstNumber("0")
-            this.props.setTempNumber("0")
-            this.props.setResult("0")
+            this.props.setFirstNumber("")
+            this.props.setTempNumber("")
+            this.props.setResult("")
             // this.setState({result: "0"})
         } else if(argOp === 'BK'){
-            this.props.setTempNumber(tempNum ? tempNum.toString().substr(0, tempNum.toString().length - 1) : "0");
-            this.props.setResult(result ? result.toString().substr(0, result.toString().length - 1) : "0");
+            this.props.setTempNumber(tempNum ? tempNum.toString().substr(0, tempNum.toString().length - 1) : "");
+            this.props.setResult(result ? result.toString().substr(0, result.toString().length - 1) : "");
         } else if(argOp === '=') {
             this.props.getResult(argOp, tempNum);                     
         }
@@ -69,7 +69,7 @@ class Calculator extends Component {
         let numComps = this.nums.map((num, idx) => <Button onEvent={this.onNumberClick} {...num} number={num} key={idx} />);
         let opComps = this.ops.map((op, idx) => <Button onEvent={this.onOpClick} {...op} key={idx} />);
         return (
-            <div className="panel panel-default col-lg-12">
+            <div className="panel panel-default col-lg-12 padding-none">
                 <div className="panel-body">
                     <div className='col-lg-12 padding-none'>
                         <Display result={result} tempNum={tempNum} onEvent={this.onNumberClick}/>

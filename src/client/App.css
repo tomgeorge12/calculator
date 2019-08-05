@@ -39,6 +39,10 @@
 .padding-none {
   padding: 1px !important;
 }
+
+.panel {
+  background-color: cadetblue !important;
+}
 .display-unit {
   height: 45px;
   display: block;

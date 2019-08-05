@@ -22,7 +22,7 @@ class Display extends Component {
                 <input
                     type="text"
                     className="display-unit"
-                    placeholder={'0'}
+                    placeholder={''}
                     onChange={this.handleChange}
                     maxLength={12}
                     value={result !== "0" && result ? result : tempNum}

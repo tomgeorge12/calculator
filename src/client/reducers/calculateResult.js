@@ -6,12 +6,28 @@ import {
 
 export default function calculateResult(state= store, action) {
     let resultState = state;
-    if (action.argOp === '=') {
+    if (action.op === '=') {
         switch (state.op) {
-            case '+': resultState = { ...state, op: action.argOp, result: state.firstNumber + parseFloat(action.number), tempNum: "" }; break;
-            case '-': resultState = { ...state, op: action.argOp, result: state.firstNumber - parseFloat(action.number), tempNum: "" }; break;
-            case '*': resultState = { ...state, op: action.argOp, result: state.firstNumber * parseFloat(action.number), tempNum: "" }; break;
-            case '/': resultState = { ...state, op: action.argOp, result: state.firstNumber / parseFloat(action.number), tempNum: "" }; break;
+            case '+': {
+                const result = parseFloat(state.firstNumber) + parseFloat(action.number);
+                resultState = { ...state, op: action.argOp, result, tempNum: result };
+                break;
+            }
+            case '-': {
+                const result = parseFloat(state.firstNumber) - parseFloat(action.number);
+                resultState = { ...state, op: action.argOp, result, tempNum: result };
+                break;
+            }
+            case '*': {
+                const result = parseFloat(state.firstNumber) * parseFloat(action.number);
+                resultState = { ...state, op: action.argOp, result, tempNum: result };
+                break;
+            }
+            case '/': {
+                const result = parseFloat(state.firstNumber) / parseFloat(action.number);
+                resultState = { ...state, op: action.argOp, result, tempNum: result };
+                break;
+            }
             case '=': resultState = { result:"", tempNum:"", firstNumber:"", op:""};break;
         }
     }

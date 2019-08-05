@@ -54,6 +54,7 @@ export const setResult = value => ({
 })
 
 export const getResult = (op, number) => ({
+    type: 'GET_RESULT',
     op,
     number
 })

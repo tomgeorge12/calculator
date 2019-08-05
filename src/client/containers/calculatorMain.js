@@ -7,16 +7,16 @@ const mapStateToProps = state => {
       tempNum: state.setNumber.tempNum,
       firstNumber: state.setNumber.firstNumber,
       op: state.setNumber.op,
-      result: state.calculateResult.result
+      result: state.setNumber.result
     }
   };
-  
+
 const mapDispatchToProps = dispatch => ({
   setFirstNumber: number => dispatch(setFirstNumber(number)),
   setTempNumber: tempNum => dispatch(setTempNumber(tempNum)),
   setOperator: op => dispatch(setOperator(op)),
   setResult: value => dispatch(setResult(value)),
-  getResult: op => dispatch(getResult(op))
+  getResult: (op, number) => dispatch(getResult(op, number))
 })
   
 export default connect(
